@@ -7,6 +7,7 @@ const swaggerDocument = YAML.load(path.resolve(__dirname,"./swagger/swagger.yaml
 
 app.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
-app.get(req, res, ()=>{
-    res.send("HOLA MUNDO");
-})
+app.get("/index", (req, res)=>{
+    res.send("HOLA")
+});
+module.exports = app;
