@@ -5,9 +5,10 @@ const swaggerUi = require('swagger-ui-express')
 const YAML = require('yamljs');
 const swaggerDocument = YAML.load(path.resolve(__dirname,"./swagger/swagger.yaml"));
 
+const user = require('../controllers/users');
+
 app.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
-app.get("/index", (req, res)=>{
-    res.send("HOLA")
-});
+app.use("/users", user);
 module.exports = app;
+
