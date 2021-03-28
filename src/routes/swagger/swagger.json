@@ -1,0 +1,188 @@
+{
+    "swagger": "2.0",
+    "info": {
+      "description": "API",
+      "version": "1.0.0",
+      "title": "Talleringo API",
+      "contact": {
+        "email": "jhosepchai@gmail.com"
+      },
+      "license": {
+        "name": "GNU GPL 3.0",
+        "url": "https://www.gnu.org/licenses/gpl-3.0.html"
+      }
+    },
+    "tags": [
+      {
+        "name": "Usuarios"
+      }      
+    ],
+    "paths": {
+        "/users/": {
+            "get": {
+              "tags": [
+                "Usuarios"
+              ],
+              "summary": "Lista usuarios",
+              "operationId": "listarUsuarios",
+              "description": "Al hacer la peticion sin parametros se devolvera una lista de objetos de usuarios\n",
+              "produces": [
+                "application/json"
+              ],
+              "responses": {
+                "200": {
+                  "description": "Devuelve array de usuarios activos",
+                  "schema": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/definitions/User"
+                    }
+                  }
+                },
+                "400": {
+                  "description": "bad input parameter"
+                }
+              }
+            }
+          },
+          "/users/{id}": {
+            "get": {
+              "tags": [
+                "Usuarios"
+              ],
+              "summary": "Listar un  usuario",
+              "description": "Listar un  usuario",
+              "consumes": [
+                "application/json"
+              ],
+              "produces": [
+                "application/json"
+              ],
+              "parameters": [
+                {
+                  "in": "path",
+                  "name": "id",
+                  "description": "ID del usuario a listar",
+                  "required": true,
+                  "type": "number"
+                }
+              ],
+              "responses": {
+                "200": {
+                    "description": "Devuelve usuario",
+                    "schema": {
+                      "type": "object",
+                      "items": {
+                        "$ref": "#/definitions/User"
+                      }
+                    }
+                  },
+                  "400": {
+                    "description": "bad input parameter"
+                  }
+              }
+            }
+          },
+          "/users": {
+            "post": {
+              "tags": [
+                "Usuarios"
+              ],
+              "summary": "Agregar un nuevo usuario",
+              "description": "Agregar un nuevo usuario",
+              "consumes": [
+                "application/json"
+              ],
+              "produces": [
+                "application/json"
+              ],
+              "parameters": [
+                {
+                  "in": "body",
+                  "name": "NuevoUsuario",
+                  "description": "Nuevo usuario a agregar",
+                  "schema": {
+                    "$ref": "#/definitions/nuevoUsuario"
+                  }
+                }
+              ],
+              "responses": {
+                "200": {
+                  "description": "OK",
+                  "schema": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/definitions/NivelItem"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "/users/{user_id}": {
+            "delete": {
+              "tags": [
+                "Usuarios"
+              ],
+              "summary": "Eliminar un  usuario",
+              "description": "Eliminar un  usuario",
+              "consumes": [
+                "application/json"
+              ],
+              "produces": [
+                "application/json"
+              ],
+              "parameters": [
+                {
+                  "in": "path",
+                  "name": "user_id",
+                  "description": "ID del usuario a eliminar",
+                  "required": true,
+                  "type": "string"
+                }
+              ],
+              "responses": {
+                "200": {
+                  "description": "true"
+                }
+              }
+            }
+          }    
+    },   
+    "definitions": {           
+          "User": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "number"
+              },
+              "uuid": {
+                "type": "string"
+              },
+              "estado": {
+                "type": "boolean"
+              }
+            },
+            "xml": {
+              "name": "User"
+            }
+          },
+          "nuevoUsuario": {
+            "type": "object",
+            "properties": {              
+              "uuid": {
+                "type": "string"
+              }
+            },
+            "xml": {
+              "name": "newUser"
+            }
+          } 
+    },
+    "host": "localhost:3000",
+    "basePath": "/api",
+    "schemes": [
+      "http",
+      "https"
+    ]
+  }

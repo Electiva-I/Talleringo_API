@@ -11,14 +11,12 @@
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.19.0",
     "dateformat": "^3.0.3",
-    "express": "^4.17.1",
-    "jsonwebtoken": "^8.5.1",
+    "express": "^4.17.1",    
     "morgan": "^1.10.0",
     "mysql": "^2.18.1",
     "swagger-jsdoc": "^4.0.0",
     "swagger-ui-express": "^4.1.4",
-    "validator": "^13.1.1",
-    "yamljs": "^0.3.0"
+    "validator": "^13.1.1"    
   },
   "devDependencies": {
     "nodemon": "^2.0.4"

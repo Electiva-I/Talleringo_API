@@ -2,8 +2,8 @@ const express = require("express"),
 path = require("path"),
 app = express.Router()
 const swaggerUi = require('swagger-ui-express')
-const YAML = require('yamljs');
-const swaggerDocument = YAML.load(path.resolve(__dirname,"./swagger/swagger.yaml"));
+
+const swaggerDocument = require('./swagger/swagger.json');
 
 const user = require('../controllers/users');
 
