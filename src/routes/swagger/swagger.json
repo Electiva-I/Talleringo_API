@@ -14,7 +14,7 @@
     },
     "tags": [
       {
-        "name": "Usuarios"
+        "name": ["Usuarios", "Cars"]
       }      
     ],
     "paths": {
@@ -138,7 +138,7 @@
                   "name": "user_id",
                   "description": "ID del usuario a eliminar",
                   "required": true,
-                  "type": "string"
+                  "type": "number"
                 }
               ],
               "responses": {
@@ -147,7 +147,125 @@
                 }
               }
             }
-          }    
+          },
+        "/cars/{id_user}":{
+          "get" : {
+            "tags" : [
+              "Cars"
+            ],
+            "summary": "Obtener lista de autos de un usuario",
+            "description": "Obtener autos del usuario",
+            "consumes": [
+              "application/json"
+            ],
+            "produces": [
+              "application/json"
+            ],
+            "parameters": [
+              {
+                "in": "path",
+                "name": "id_user",
+                "description": "ID del usuario a obtener autos",
+                "required": true,
+                "type": "number"
+              }
+            ],
+            "responses": {
+              "200": {
+                "description": "true"
+              }
+            }
+          }
+        },
+        "/cars/{id_vehiculo_usuario}":{
+          "delete" : {
+            "tags" : [
+              "Cars"
+            ],
+            "summary": "Eliminar un vehiculo de un usuario",
+            "description": "Eliminar un vehiculo que el usuario elija",
+            "consumes": [
+              "application/json"
+            ],
+            "produces": [
+              "application/json"
+            ],
+            "parameters": [
+              {
+                "in": "path",
+                "name": "id_vehiculo_usuario",
+                "description": "ID del auto a eliminar",
+                "required": true,
+                "type": "number"
+              }
+            ],
+            "responses": {
+              "200": {
+                "description": "true"
+              }
+            }
+          }
+        },
+        "/cars":{
+          "post" : {
+            "tags" : [
+              "Cars"
+            ],
+            "summary": "Agregar un vehiculo de un usuario",
+            "description": "Agregar un vehiculo perteneciente al usuario",
+            "consumes": [
+              "application/json"
+            ],
+            "produces": [
+              "application/json"
+            ],
+            "parameters": [
+              {
+                "in": "body",
+                  "name": "nuevoVehiculoUsuario",
+                  "description": "Nuevo vehiculo a agregar",
+                  "schema": {
+                    "$ref": "#/definitions/nuevoVehiculoUsuario"
+                  }
+              }
+            ],
+            "responses": {
+              "200": {
+                "description": "true"
+              }
+            }
+          }
+        },
+        "/cars/":{
+          "put" : {
+            "tags" : [
+              "Cars"
+            ],
+            "summary": "Modificar datos un vehiculo de un usuario",
+            "description": "Modificar datos de un vehiculo perteneciente al usuario",
+            "consumes": [
+              "application/json"
+            ],
+            "produces": [
+              "application/json"
+            ],
+            "parameters": [
+              {
+                "in": "body",
+                  "name": "UpdateVehiculo",
+                  "description": "Nuevo vehiculo a agregar",
+                  "schema": {
+                    "$ref": "#/definitions/updateVehiculoUsuario"
+                  }
+              }
+            ],
+            "responses": {
+              "200": {
+                "description": "true"
+              }
+            }
+          }
+        }      
     },   
     "definitions": {           
           "User": {
@@ -177,7 +295,48 @@
             "xml": {
               "name": "newUser"
             }
-          } 
+          },
+          "nuevoVehiculoUsuario": {
+            "type": "object",
+            "properties": {
+              "id_modelo": {
+                "type": "number"
+              },
+              "id_usuario": {
+                "type": "number"
+              },
+              "url_img": {
+                "type": "string"
+              },
+              "anio": {
+                "type": "string"
+              }
+            },
+            "xml": {
+              "name": "nuevoVehiculoUsuario"
+            }
+          },
+          "updateVehiculoUsuario": {
+            "type": "object",
+            "properties": {
+              "id_vehiculo_usuario": {
+                "type": "number"
+              },
+              "id_modelo": {
+                "type": "number"
+              },              
+              "url_img": {
+                "type": "string"
+              },
+              "anio": {
+                "type": "strin"
+              }
+            },
+            "xml": {
+              "name": "updateVehiculoUsuario"
+            }
+          }
+          
     },
     "host": "localhost:3000",
     "basePath": "/api",
