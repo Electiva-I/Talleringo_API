@@ -14,7 +14,7 @@
     },
     "tags": [
       {
-        "name": ["Usuarios", "Cars"]
+        "name": ["Usuarios", "Cars", "Maintenance"]
       }      
     ],
     "paths": {
@@ -265,6 +265,65 @@
               }
             }
           }
+        },
+        "/maintenance/{id_user}":{
+          "get" : {
+            "tags" : [
+              "Maintenance"
+            ],
+            "summary": "Obtener lista de mantenimientos de un usuario",
+            "description": "Obtener la lista de los mantenimientos agendados por un usuario",
+            "consumes": [
+              "application/json"
+            ],
+            "produces": [
+              "application/json"
+            ],
+            "parameters": [
+              {
+                "in": "path",
+                "name": "id_user",
+                "description": "ID del usuario a obtener autos",
+                "required": true,
+                "type": "number"
+              }
+            ],
+            "responses": {
+              "200": {
+                "description": "true"
+              }
+            }
+          }
+        },
+        "/maintenance":{
+          "post" : {
+            "tags" : [
+              "Maintenance"
+            ],
+            "summary": "Agregar un nuevo mantenimiento",
+            "description": "Agregar un nuevo mantenimiento a un vehiculo del usuario",
+            "consumes": [
+              "application/json"
+            ],
+            "produces": [
+              "application/json"
+            ],
+            "parameters": [
+              {
+                "in": "body",
+                  "name": "newMaintenance",
+                  "description": "Nuevo vehiculo a agregar",
+                  "schema": {
+                    "$ref": "#/definitions/newMaintenance"
+                  }
+              }
+            ],
+            "responses": {
+              "200": {
+                "description": "true"
+              }
+            }
+          }
         }      
     },   
     "definitions": {           
@@ -329,11 +388,62 @@
                 "type": "string"
               },
               "anio": {
-                "type": "strin"
+                "type": "string"
               }
             },
             "xml": {
               "name": "updateVehiculoUsuario"
+            }
+          },
+          "Maintenance": {
+            "type" : "object",
+            "properties": {
+              "id_programado" : {
+                "type": "number"
+              },
+              "id_modelo" :{
+                "type" : "number"
+              },
+              "img_url" : {
+                "type" :"string"
+              },
+              "anio" : {
+                "type" : "string"
+              },
+              "detalle" : {
+                "type" : "string"
+              },
+              "fecha_creacion" : {
+                "type" : "string",
+                "format": "date"
+              },
+              "fecha_programado" : {
+                "type" : "string",
+                "format": "date"
+              },
+              "estado" : {
+                "type" : "boolean"
+              }
+            },
+            "xml": {
+              "name": "Maintenance"
+            }
+          },
+          "newMaintenance" : {
+            "type" : "object",
+            "properties": {
+              "id_vehiculo_usuario" : {
+                "type": "number"
+              },
+              "detalle" : {
+                "type" : "string"
+              },
+              "fecha_programado" : {
+                "type" : "string"
+              }
+            },
+            "xml": {
+              "name": "newMaintenance"
             }
           }
           
