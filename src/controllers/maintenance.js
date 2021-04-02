@@ -1,7 +1,7 @@
 const pool = require('../settings/db');
 const express = require("express");
 const { response } = require('express');
-const {create} = require("../models/maintenance");
+const {create, update, _delete} = require("../models/maintenance");
 
 const route = express.Router();
 
@@ -12,6 +12,16 @@ route.get('/:id_user', async(req, res)=>{
 
 route.post('/', async (req, res)=>{
     const result = await create(req.body);
+    res.json({"response" : result});
+});
+
+route.put('/', async (req, res)=>{
+    const result = await update(req.body);
+    res.json({"response" : result});
+});
+
+route.delete('/:id_programado', async (req, res)=>{
+    const result = await _delete(req.params.id_programado);
     res.json({"response" : result});
 })
 

@@ -324,6 +324,65 @@
               }
             }
           }
+        },
+        "/maintenance/":{
+          "put" : {
+            "tags" : [
+              "Maintenance"
+            ],
+            "summary": "Actualizar un mantenimiento",
+            "description": "Actualizar un mantenimiento a un vehiculo del usuario",
+            "consumes": [
+              "application/json"
+            ],
+            "produces": [
+              "application/json"
+            ],
+            "parameters": [
+              {
+                "in": "body",
+                  "name": "updateMaintenance",
+                  "description": "Datos de matenimiento del vehiculo a actualizar",
+                  "schema": {
+                    "$ref": "#/definitions/updateMaintenance"
+                  }
+              }
+            ],
+            "responses": {
+              "200": {
+                "description": "true"
+              }
+            }
+          }
+        },
+        "/maintenance/{id_programado}":{
+          "delete" : {
+            "tags" : [
+              "Maintenance"
+            ],
+            "summary": "Eliminar un mantenimiento de un vehiculo",
+            "description": "Eliminar un mantenimiento que el usuario elija",
+            "consumes": [
+              "application/json"
+            ],
+            "produces": [
+              "application/json"
+            ],
+            "parameters": [
+              {
+                "in": "path",
+                "name": "id_programado",
+                "description": "ID del mantenimiento a eliminar",
+                "required": true,
+                "type": "number"
+              }
+            ],
+            "responses": {
+              "200": {
+                "description": "true"
+              }
+            }
+          }
         }      
     },   
     "definitions": {           
@@ -444,6 +503,23 @@
             },
             "xml": {
               "name": "newMaintenance"
+            }
+          },
+          "updateMaintenance" : {
+            "type" : "object",
+            "properties" : {
+              "id_programado" : {
+                "type" : "number"
+              },
+              "detalle" : {
+                "type" : "string"
+              },
+              "fecha_programado" : {
+                "type" : "string"
+              }
+            },
+            "xml" : {
+              "name" : "updateMaintenance"
             }
           }
           
