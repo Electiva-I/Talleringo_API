@@ -14,9 +14,9 @@ const create = async(data) =>{
 
 const update = async(data)=>{
     let {id_programado, detalle,
-        fecha_programado} = data;
+        fecha_programado, estado} = data;
     try{
-        await pool.query(`call heroku_ef3e73c2884083e.proc_update_mantenimiento(${id_programado}, '${detalle}', '${fecha_programado}')`);
+        await pool.query(`call heroku_ef3e73c2884083e.proc_update_mantenimiento(${id_programado}, '${detalle}', '${fecha_programado}', ${estado})`);
         return true;
     }catch(e){
         console.log(e);

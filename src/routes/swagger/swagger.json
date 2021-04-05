@@ -266,7 +266,7 @@
             }
           }
         },
-        "/maintenance/{id_user}":{
+        "/maintenance/select_actives/{id}":{
           "get" : {
             "tags" : [
               "Maintenance"
@@ -282,7 +282,7 @@
             "parameters": [
               {
                 "in": "path",
-                "name": "id_user",
+                "name": "id",
                 "description": "ID del usuario a obtener autos",
                 "required": true,
                 "type": "number"
@@ -295,7 +295,36 @@
             }
           }
         },
-        "/maintenance":{
+        "/maintenance/select_inactives/{id}":{
+          "get" : {
+            "tags" : [
+              "Maintenance"
+            ],
+            "summary": "Obtener lista de mantenimientos inactivos de un usuario",
+            "description": "Obtener la lista de los mantenimientos agendados por un usuario ya inactivos",
+            "consumes": [
+              "application/json"
+            ],
+            "produces": [
+              "application/json"
+            ],
+            "parameters": [
+              {
+                "in": "path",
+                "name": "id",
+                "description": "ID del usuario a obtener autos",
+                "required": true,
+                "type": "number"
+              }
+            ],
+            "responses": {
+              "200": {
+                "description": "true"
+              }
+            }
+          }
+        },
+        "/maintenance/create/":{
           "post" : {
             "tags" : [
               "Maintenance"
@@ -325,7 +354,7 @@
             }
           }
         },
-        "/maintenance/":{
+        "/maintenance/update/":{
           "put" : {
             "tags" : [
               "Maintenance"
@@ -355,7 +384,7 @@
             }
           }
         },
-        "/maintenance/{id_programado}":{
+        "/maintenance/delete/{id_programado}":{
           "delete" : {
             "tags" : [
               "Maintenance"
@@ -516,6 +545,9 @@
               },
               "fecha_programado" : {
                 "type" : "string"
+              },
+              "estado" : {
+                "type" : "boolean"
               }
             },
             "xml" : {
