@@ -4,22 +4,22 @@ const { delete_, create, update} = require("../models/cars");
 
 const route = express.Router();
 
-route.get('/:id_user', async(req, res)=>{
+route.get('/select/:id_user', async(req, res)=>{
     const result = await pool.query(`select * from vehiculo_usuario where id_usuario = ${req.params.id_user}`);
     res.json(result);
 });
 
-route.post('/', async (req, res)=>{
+route.post('/create', async (req, res)=>{
     let response = await create(req.body);
     res.json({"response": response});
 });
 
-route.delete('/:id_vehiculo_usuario', async(req, res)=>{
+route.delete('/delete/:id_vehiculo_usuario', async(req, res)=>{
     let response = await delete_(req.params.id_vehiculo_usuario);
     res.json({"response" : response});
 });
 
-route.put('/', async(req, res)=>{
+route.put('/update/', async(req, res)=>{
     let response = await update(req.body);
     res.json({"response" : response});
 })

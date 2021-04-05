@@ -148,7 +148,7 @@
               }
             }
           },
-        "/cars/{id_user}":{
+        "/cars/select/{id_user}":{
           "get" : {
             "tags" : [
               "Cars"
@@ -177,7 +177,7 @@
             }
           }
         },
-        "/cars/{id_vehiculo_usuario}":{
+        "/cars/delete/{id_vehiculo_usuario}":{
           "delete" : {
             "tags" : [
               "Cars"
@@ -206,7 +206,7 @@
             }
           }
         },
-        "/cars":{
+        "/cars/create/":{
           "post" : {
             "tags" : [
               "Cars"
@@ -236,7 +236,7 @@
             }
           }
         },
-        "/cars/":{
+        "/cars/update/":{
           "put" : {
             "tags" : [
               "Cars"
