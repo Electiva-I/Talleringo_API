@@ -18,7 +18,7 @@
       }      
     ],
     "paths": {
-        "/users/": {
+        "/users/select/": {
             "get": {
               "tags": [
                 "Usuarios"
@@ -45,7 +45,7 @@
               }
             }
           },
-          "/users/{id}": {
+          "/users/select_one/{id}": {
             "get": {
               "tags": [
                 "Usuarios"
@@ -83,7 +83,7 @@
               }
             }
           },
-          "/users": {
+          "/users/create/": {
             "post": {
               "tags": [
                 "Usuarios"
@@ -119,7 +119,7 @@
               }
             }
           },
-          "/users/{user_id}": {
+          "/users/delete/{user_id}": {
             "delete": {
               "tags": [
                 "Usuarios"

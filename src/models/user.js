@@ -14,9 +14,10 @@ const create = async (data) =>{
 
 const delete_ = async (id) =>{    
     try{
-         await pool.query(`delete from usuario where id_usuario = ${id}`);    
+         await pool.query(`call heroku_ef3e73c2884083e.update_state_user(${id})`);    
          return true;
     }catch(e) {
+        console.log(e);
         return false;
     }
 };
