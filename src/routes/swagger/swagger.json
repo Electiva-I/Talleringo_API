@@ -14,7 +14,7 @@
     },
     "tags": [
       {
-        "name": ["Usuarios", "Cars", "Maintenance"]
+        "name": ["Usuarios", "Cars", "Maintenance", "Marcas"]
       }      
     ],
     "paths": {
@@ -412,6 +412,115 @@
               }
             }
           }
+        },
+        "/marcas/create/":{
+          "post" : {
+            "tags" : [
+              "Marcas"
+            ],
+            "summary": "Agregar una nueva marca",
+            "description": "Agregar una nueva marca de automovil",
+            "consumes": [
+              "application/json"
+            ],
+            "produces": [
+              "application/json"
+            ],
+            "parameters": [
+              {
+                "in": "body",
+                  "name": "newMarca",
+                  "description": "Nueva marca a agregar",
+                  "schema": {
+                    "$ref": "#/definitions/newMarca"
+                  }
+              }
+            ],
+            "responses": {
+              "200": {
+                "description": "true"
+              }
+            }
+          }
+        },
+        "/marcas/select/":{
+          "get" : {
+            "tags" : [
+              "Marcas"
+            ],
+            "summary": "Obtener lista de marcas",
+            "description": "Obtener la lista de marcas de autos",
+            "consumes": [
+              "application/json"
+            ],
+            "produces": [
+              "application/json"
+            ],
+            "responses": {
+              "200": {
+                "description": "true"
+              }
+            }
+          }
+        },
+        "/marcas/update/":{
+          "put" : {
+            "tags" : [
+              "Marcas"
+            ],
+            "summary": "Actualizar una marca",
+            "description": "Actualizar una marca de automovil",
+            "consumes": [
+              "application/json"
+            ],
+            "produces": [
+              "application/json"
+            ],
+            "parameters": [
+              {
+                "in": "body",
+                  "name": "updateMarca",
+                  "description": "Marca a actualizar",
+                  "schema": {
+                    "$ref": "#/definitions/updateMarca"
+                  }
+              }
+            ],
+            "responses": {
+              "200": {
+                "description": "true"
+              }
+            }
+          }
+        },
+        "/marcas/delete/{id_marca}":{
+          "delete" : {
+            "tags" : [
+              "Marcas"
+            ],
+            "summary": "Eliminar una marca",
+            "description": "Eliminar una marca de vehiculo",
+            "consumes": [
+              "application/json"
+            ],
+            "produces": [
+              "application/json"
+            ],
+            "parameters": [
+              {
+                "in": "path",
+                "name": "id_marca",
+                "description": "ID de la marca a eliminar",
+                "required": true,
+                "type": "number"
+              }
+            ],
+            "responses": {
+              "200": {
+                "description": "true"
+              }
+            }
+          }
         }      
     },   
     "definitions": {           
@@ -553,8 +662,38 @@
             "xml" : {
               "name" : "updateMaintenance"
             }
+          },
+          "newMarca" : {
+            "type" : "object",
+            "properties" : {
+              "nombre_marca" : {
+                "type" : "string"
+              },
+              "fabricante" : {
+                "type" : "string"
+              }
+            },
+            "xml" : {
+              "name" : "newMarca"
+            }
+          },
+          "updateMarca" : {
+            "type" : "object",
+            "properties" : {
+              "id_marca" : {
+                "type" : "number"
+              },
+              "nombre_marca" : {
+                "type" : "string"
+              },
+              "fabricante" : {
+                "type" : "string"
+              }
+            },
+            "xml" : {
+              "name" : "updateMarca"
+            }
           }
-          
     },
     "host": "localhost:3000",
     "basePath": "/api",
