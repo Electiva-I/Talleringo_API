@@ -9,6 +9,7 @@ const user = require('../controllers/users');
 const cars = require('../controllers/cars');
 const maintenance = require('../controllers/maintenance');
 const marcas = require('../controllers/marcas');
+const modelos = require('../controllers/modelo')
 
 app.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
@@ -19,6 +20,8 @@ app.use("/cars", cars);
 app.use("/maintenance", maintenance);
 
 app.use("/marcas", marcas);
+
+app.use("/modelos", modelos)
 
 module.exports = app;
 

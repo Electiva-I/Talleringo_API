@@ -14,7 +14,7 @@
     },
     "tags": [
       {
-        "name": ["Usuarios", "Cars", "Maintenance", "Marcas"]
+        "name": ["Usuarios", "Cars", "Maintenance", "Marcas", "Modelos"]
       }      
     ],
     "paths": {
@@ -521,6 +521,56 @@
               }
             }
           }
+        },
+        "/modelos/create/":{
+          "post" : {
+            "tags" : [
+              "Modelos"
+            ],
+            "summary": "Agregar un nuevo modelo",
+            "description": "Agregar un nuevo modelo de automovil para una marca respectiva",
+            "consumes": [
+              "application/json"
+            ],
+            "produces": [
+              "application/json"
+            ],
+            "parameters": [
+              {
+                "in": "body",
+                  "name": "newModelo",
+                  "description": "Nuevo modelo a agregar",
+                  "schema": {
+                    "$ref": "#/definitions/newModelo"
+                  }
+              }
+            ],
+            "responses": {
+              "200": {
+                "description": "true"
+              }
+            }
+          }
+        },
+        "/modelos/select/":{
+          "get" : {
+            "tags" : [
+              "Modelos"
+            ],
+            "summary": "Obtener lista de modelos",
+            "description": "Obtener la lista de modelos de autos",
+            "consumes": [
+              "application/json"
+            ],
+            "produces": [
+              "application/json"
+            ],
+            "responses": {
+              "200": {
+                "description": "true"
+              }
+            }
+          }
         }      
     },   
     "definitions": {           
@@ -692,6 +742,20 @@
             },
             "xml" : {
               "name" : "updateMarca"
+            }
+          },
+          "newModelo" : {
+            "type" : "object",
+            "properties" : {
+              "nombre_modelo" : {
+                "type" : "string"
+              },
+              "id_marca" : {
+                "type" : "number"
+              }
+            },
+            "xml" : {
+              "name" : "newModelo"
             }
           }
     },
