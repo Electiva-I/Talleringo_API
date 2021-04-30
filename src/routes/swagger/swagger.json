@@ -14,7 +14,7 @@
     },
     "tags": [
       {
-        "name": ["Usuarios", "Cars", "Maintenance", "Marcas", "Modelos"]
+        "name": ["Usuarios", "Cars", "Maintenance", "Marcas", "Modelos", "Historial"]
       }      
     ],
     "paths": {
@@ -688,6 +688,64 @@
               }
             }
           }
+        },
+        "/historial/create/":{
+          "post" : {
+            "tags" : [
+              "Historial"
+            ],
+            "summary": "Agregar un mantenimiento ya realizado al historial",
+            "consumes": [
+              "application/json"
+            ],
+            "produces": [
+              "application/json"
+            ],
+            "parameters": [
+              {
+                "in": "body",
+                  "name": "newHistorial",
+                  "description": "Datos de mantenimiento para agregarlo a historial",
+                  "schema": {
+                    "$ref": "#/definitions/newHistorial"
+                  }
+              }
+            ],
+            "responses": {
+              "200": {
+                "description": "true"
+              }
+            }
+          }
+        },
+        "/historial/select/{id_vehiculo}":{
+          "get" : {
+            "tags" : [
+              "Historial"
+            ],
+            "summary": "Obtener lista de mantenimientos realizados a un vehiculo",
+            "description": "Obtener la de mantenimientos realizados a un vehiuclo del usuario",
+            "consumes": [
+              "application/json"
+            ],
+            "produces": [
+              "application/json"
+            ],
+            "parameters": [
+              {
+                "in": "path",
+                "name": "id_vehiculo",
+                "description": "ID del vehiculo del cual se quiere obtener sus mantenimientos realizados",
+                "required": true,
+                "type": "number"
+              }
+            ],
+            "responses": {
+              "200": {
+                "description": "true"
+              }
+            }
+          }
         }       
     },   
     "definitions": {           
@@ -890,6 +948,29 @@
             },
             "xml" : {
               "name" : "updateModelo"
+            }
+          },
+          "newHistorial" : {
+            "type" : "object",
+            "properties": {
+              "id_vehiculo_usuario" : {
+                "type": "number"
+              },
+              "detalle" : {
+                "type" : "string"
+              },
+              "fecha" : {
+                "type" : "string"
+              },
+              "costo" :{
+                "type" : "number"
+              },
+              "id_programado" :{
+                "type" : "number"
+              }
+            },
+            "xml": {
+              "name": "newHistorial"
             }
           }
     },
