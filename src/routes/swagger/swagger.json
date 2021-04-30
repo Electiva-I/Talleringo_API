@@ -571,7 +571,124 @@
               }
             }
           }
-        }      
+        },
+        "/modelos/select_marca/{id_marca}":{
+          "get" : {
+            "tags" : [
+              "Modelos"
+            ],
+            "summary": "Obtener lista de modelos por marca",
+            "description": "Obtener la lista de modelos de autos segun una marca",
+            "consumes": [
+              "application/json"
+            ],
+            "produces": [
+              "application/json"
+            ],
+            "parameters": [
+              {
+                "in": "path",
+                "name": "id_marca",
+                "description": "ID de la marca de la cual se quieren obtener los modelos",
+                "required": true,
+                "type": "number"
+              }
+            ],
+            "responses": {
+              "200": {
+                "description": "true"
+              }
+            }
+          }
+        },
+        "/modelos/select_one/{id_modelo}":{
+          "get" : {
+            "tags" : [
+              "Modelos"
+            ],
+            "summary": "Obtener un modelo de auto",
+            "description": "Obtener un modelo de automovil segun su id",
+            "consumes": [
+              "application/json"
+            ],
+            "produces": [
+              "application/json"
+            ],
+            "parameters": [
+              {
+                "in": "path",
+                "name": "id_modelo",
+                "description": "ID del modelo del cual se quieren obtener sus datos",
+                "required": true,
+                "type": "number"
+              }
+            ],
+            "responses": {
+              "200": {
+                "description": "true"
+              }
+            }
+          }
+        },
+        "/modelos/update/":{
+          "put" : {
+            "tags" : [
+              "Modelos"
+            ],
+            "summary": "Actualizar un modelo",
+            "description": "Actualizar un modelo de automovil",
+            "consumes": [
+              "application/json"
+            ],
+            "produces": [
+              "application/json"
+            ],
+            "parameters": [
+              {
+                "in": "body",
+                  "name": "updateModelo",
+                  "description": "Modelo a actualizar",
+                  "schema": {
+                    "$ref": "#/definitions/updateModelo"
+                  }
+              }
+            ],
+            "responses": {
+              "200": {
+                "description": "true"
+              }
+            }
+          }
+        },
+        "/modelos/delete/{id_modelo}":{
+          "delete" : {
+            "tags" : [
+              "Modelos"
+            ],
+            "summary": "Eliminar un modelo",
+            "description": "Eliminar un modelo de vehiculo",
+            "consumes": [
+              "application/json"
+            ],
+            "produces": [
+              "application/json"
+            ],
+            "parameters": [
+              {
+                "in": "path",
+                "name": "id_modelo",
+                "description": "ID del modelo a eliminar",
+                "required": true,
+                "type": "number"
+              }
+            ],
+            "responses": {
+              "200": {
+                "description": "true"
+              }
+            }
+          }
+        }       
     },   
     "definitions": {           
           "User": {
@@ -756,6 +873,23 @@
             },
             "xml" : {
               "name" : "newModelo"
+            }
+          },
+          "updateModelo" : {
+            "type" : "object",
+            "properties" : {
+              "id_modelo" : {
+                "type" : "number"
+              },
+              "nombre_modelo" : {
+                "type" : "string"
+              },
+              "id_marca" : {
+                "type" : "number"
+              }
+            },
+            "xml" : {
+              "name" : "updateModelo"
             }
           }
     },
