@@ -14,7 +14,7 @@
     },
     "tags": [
       {
-        "name": ["Usuarios", "Cars", "Maintenance", "Marcas", "Modelos", "Historial"]
+        "name": ["Usuarios", "Cars", "Maintenance", "Marcas", "Modelos", "Historial", "Paso_autos"]
       }      
     ],
     "paths": {
@@ -743,6 +743,29 @@
             "responses": {
               "200": {
                 "description": "true"
+              }
+            }
+          }
+        },
+        "/paso_Autos/llenar/":{
+          "post" : {
+            "tags" : [
+              "Paso_autos"
+            ],
+            "summary": "Llenar bd con autos",
+            "description": "Agregar marcas y modelos de autos desde otra api",
+            "consumes": [
+              "application/json"
+            ],
+            "produces": [
+              "application/json"
+            ],
+            "responses": {
+              "200": {
+                "description": "true",
+                "schema": {
+                  "type": "object"
+                }
               }
             }
           }

@@ -11,6 +11,7 @@ const maintenance = require('../controllers/maintenance');
 const marcas = require('../controllers/marcas');
 const modelos = require('../controllers/modelo');
 const historial = require('../controllers/historial');
+const paso_autos = require('../controllers/paso_autos');
 
 app.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
@@ -25,6 +26,8 @@ app.use("/marcas", marcas);
 app.use("/modelos", modelos)
 
 app.use("/historial", historial);
+
+app.use("/paso_autos", paso_autos);
 
 module.exports = app;
 
