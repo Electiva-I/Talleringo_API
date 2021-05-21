@@ -925,6 +925,10 @@
               },
               "fabricante" : {
                 "type" : "string"
+              },
+              "isCustom" : {
+                "type" : "number",
+                "default" : 0
               }
             },
             "xml" : {
@@ -956,6 +960,10 @@
               },
               "id_marca" : {
                 "type" : "number"
+              },
+              "isCustom" : {
+                "type" : "number",
+                "default" : 0
               }
             },
             "xml" : {

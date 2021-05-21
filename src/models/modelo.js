@@ -1,10 +1,10 @@
 const pool = require('../settings/db');
 
 const create = async(data)=>{
-    let {nombre_modelo, id_marca} = data;
+    let {nombre_modelo, id_marca, isCustom} = data;
 
     try{
-        await pool.query(`call heroku_ef3e73c2884083e.create_modelo('${nombre_modelo}', ${id_marca})`);
+        await pool.query(`call heroku_ef3e73c2884083e.create_modelo('${nombre_modelo}', ${id_marca}, ${isCustom})`);
         return true;
     }catch(e){
         console.log(e);
