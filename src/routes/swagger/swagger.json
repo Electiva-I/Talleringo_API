@@ -283,7 +283,7 @@
               {
                 "in": "path",
                 "name": "id",
-                "description": "ID del usuario a obtener autos",
+                "description": "ID del auto a ver sus mantenimientos",
                 "required": true,
                 "type": "number"
               }
@@ -312,7 +312,7 @@
               {
                 "in": "path",
                 "name": "id",
-                "description": "ID del usuario a obtener autos",
+                "description": "ID del auto a ver sus mantenimientos",
                 "required": true,
                 "type": "number"
               }
@@ -341,7 +341,7 @@
               {
                 "in": "body",
                   "name": "newMaintenance",
-                  "description": "Nuevo vehiculo a agregar",
+                  "description": "Nuevo mantenimiento a agregar",
                   "schema": {
                     "$ref": "#/definitions/newMaintenance"
                   }
@@ -814,6 +814,9 @@
               },
               "anio": {
                 "type": "string"
+              },
+              "uuid":{
+                "type" : "string"
               }
             },
             "xml": {
@@ -884,6 +887,9 @@
                 "type" : "string"
               },
               "fecha_programado" : {
+                "type" : "string"
+              }, 
+              "uuid" :{
                 "type" : "string"
               }
             },
@@ -990,6 +996,9 @@
               },
               "id_programado" :{
                 "type" : "number"
+              },
+              "uuid" : {
+                "type" : "string"
               }
             },
             "xml": {
