@@ -11,12 +11,12 @@ route.post('/create/', async(req, res)=>{
 });
 
 route.get('/select/', async(req, res)=>{
-    const result = await pool.query(`call heroku_ef3e73c2884083e.select_modelos()`);
+    const result = await pool.query(`select * from modelos_vehiculos where isCustom != 1`);
     res.json(result);
 });
 
 route.get('/select_marca/:id_marca', async(req, res)=>{
-    const result = await pool.query(`call heroku_ef3e73c2884083e.select_modelos_marca(${req.params.id_marca})`);
+    const result = await pool.query(` select * from modelos_vehiculos where isCustom != 1 and id_marca = (${req.params.id_marca})`);
     res.json(result);
 });
 
