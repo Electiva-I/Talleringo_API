@@ -11,8 +11,8 @@ route.post('/create/', async(req, res)=>{
 });
 
 route.get('/select/', async(req, res)=>{
-    const result = await pool.query('select * from marcas_vehiculos');
-    res.json({"response" : result});
+    const result = await pool.query('select * from marcas_vehiculos where isCustom != 1');
+    res.json(result);
 });
 
 route.put('/update/', async(req, res)=>{
