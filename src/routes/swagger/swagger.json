@@ -14,7 +14,8 @@
     },
     "tags": [
       {
-        "name": ["Usuarios", "Cars", "Maintenance", "Marcas", "Modelos", "Historial", "Paso_autos"]
+        "name": ["Usuarios", "Cars", "Maintenance",
+          "Marcas", "Modelos", "Historial", "Paso_autos", "Sync"]
       }      
     ],
     "paths": {
@@ -718,6 +719,36 @@
             }
           }
         },
+        "/sync/sync_up/":{
+          "post" : {
+            "tags" : [
+              "Sync"
+            ],
+            "summary": "Sincronizar",
+            "description": "Sincronizar los datos del usuario con el servidor",
+            "consumes": [
+              "application/json"
+            ],
+            "produces": [
+              "application/json"
+            ],
+            "parameters": [
+              {
+                "in": "body",
+                  "name": "newModelo",
+                  "description": "Nuevo modelo a agregar",
+                  "schema": {
+                    "$ref": "#/definitions/sync"
+                  }
+              }
+            ],
+            "responses": {
+              "200": {
+                "description": "true"
+              }
+            }
+          }
+        },
         "/historial/select/{id_vehiculo}":{
           "get" : {
             "tags" : [
@@ -769,7 +800,7 @@
               }
             }
           }
-        }       
+        }
     },   
     "definitions": {           
           "User": {
@@ -1011,6 +1042,26 @@
             },
             "xml": {
               "name": "newHistorial"
+            }
+          },
+          "sync" : {
+            "type" : "object",
+            "properties": {
+              "mach_Data" : {
+                "type": "object",
+                "properties" :{
+
+                }
+              },
+              "payload" : {
+                "type" : "object",
+                "properties" :{
+
+                }
+              }
+            },
+            "xml": {
+              "name": "sync"
             }
           }
     },
