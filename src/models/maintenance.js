@@ -2,9 +2,9 @@ const pool = require('../settings/db');
 
 const create = async(data) =>{
     let {id_vehiculo_usuario, detalle,
-        fecha_programado} = data;
+        fecha_programado, uuid} = data;
     try{
-        await pool.query(`call heroku_ef3e73c2884083e.proc_create_mantenimiento(${id_vehiculo_usuario}, '${detalle}', '${fecha_programado}')`);
+        await pool.query(`call heroku_ef3e73c2884083e.proc_create_mantenimiento(${id_vehiculo_usuario}, '${detalle}', '${fecha_programado}', '${uuid}')`);
         return true;
     }catch(e){
         console.log(e);
